@@ -7,7 +7,7 @@
     # San Francisco, California 94105, USA.
     ##############################################################################
 
-![screenshots]http://te4.org/sites/default/files/wabi_logo.png
+![screenshots](http://te4.org/sites/default/files/wabi_logo.png)
 
 Play T.O.M.E. the rougelike with a 360 Gamepad!
 
