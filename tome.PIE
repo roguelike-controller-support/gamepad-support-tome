@@ -1,0 +1,234 @@
+﻿//mode managment variables
+if starting then var.NormalMode = 1
+if starting then var.LookMode = 0
+//if starting then say("welcome to the TOME controle suite")
+//had to abandom and inventory mode due to menu depth issues, no way to track
+//if you are actually in the inv
+//feat mode as well for now, really no point
+
+//turn off auto-repeat we need manage rate manually
+Keyboard.RepeatFakeKeys = false
+
+//MODE=NORMAL
+if (var.NormalMode = 1) then{
+  //Movement - Left Stick
+  var.topleft = (XInput1.Joy1Y > 0.3 and XInput1.Joy1X < -0.3 and xinput1.LeftTrigger)
+  if (var.topleft) then{
+    Press(NumPad7)
+    wait(200 milliseconds)
+  }
+  var.topright = (XInput1.Joy1Y > 0.3 and XInput1.Joy1X > 0.3 and xinput1.LeftTrigger)
+  if (var.topright) then{
+    Press(NumPad9)
+    wait(200 milliseconds)
+  }
+  var.botleft = (XInput1.Joy1X < -0.3 and XInput1.Joy1Y < -0.3 and xinput1.LeftTrigger)
+  if (var.botleft) then{
+    Press(NumPad1)
+    wait(200 milliseconds)
+  }
+  var.botright = (XInput1.Joy1X > 0.3 and XInput1.Joy1Y < -0.3 and xinput1.LeftTrigger)
+  if (var.botright) then{
+    Press(NumPad3)
+    wait(200 milliseconds)
+  }
+  var.myup = (XInput1.Joy1Y > 0.5 and not xinput1.LeftTrigger)
+  if (var.myup) then{
+    Press(Up)
+    wait(200 milliseconds)
+  }
+  var.myleft = (XInput1.Joy1X < -0.5 and not xinput1.LeftTrigger)
+  if (var.myleft) then{
+    Press(Left)
+    wait(200 milliseconds)
+  }
+  var.myright = (XInput1.Joy1X > 0.5 and not xinput1.LeftTrigger)
+  if (var.myright) then{
+    Press(Right)
+    wait(200 milliseconds)
+  }
+  var.mydown = (XInput1.Joy1Y < -0.5 and not xinput1.LeftTrigger)
+  if (var.mydown) then{
+    Press(Down)
+    wait(200 milliseconds)
+  }
+
+  //MAIN SHIFT KEY MODE
+  if (xinput1.leftTrigger and var.NormalMode == 1) then{
+    J = XInput1.Start
+    D = XInput1.A
+    //LeftCtrl = XInput1.B and xinput1.leftTrigger
+    //for some reason this has to be rightctrl left messes things up
+    Key.RightCtrl = XInput1.B
+    //We need this hack to register key presses properly, perhaps frame buff issue?
+    var.shiftedy = XInput1.Y
+    if (var.shiftedy) then{
+      press(LeftShift)
+      wait 20 ms
+      Press(G)
+      wait 20 ms
+      release(G)
+      wait 20 ms
+      release(LeftShift)
+      wait 200 ms
+    }
+    var.shiftedx = XInput1.X
+    if (var.shiftedx) then{
+      press(LeftCtrl)
+      wait 20 ms
+      Press(M)
+      wait 20 ms
+      release(M)
+      wait 20 ms
+      release(LeftCtrl)
+      wait 200 ms
+    }
+    var.shiftedback = XInput1.Back
+    if (var.shiftedback) then{
+      press(LeftCtrl)
+      wait 20 ms
+      Press(Tab)
+      wait 20 ms
+      release(Tab)
+      wait 20 ms
+      release(LeftCtrl)
+      wait 200 ms
+    }
+    var.shiftedrshold = XInput1.rightShoulder
+    if (var.shiftedrshold) then{
+      press(LeftShift)
+      wait 20 ms
+      Press(Dot)
+      wait 20 ms
+      release(Dot)
+      wait 20 ms
+      release(LeftShift)
+      wait 200 ms
+    }
+    var.mywait = XInput1.leftShoulder
+    if (var.mywait) then{
+      Press(NumPad5)
+      wait(20 milliseconds)
+    }
+    //shortcuts
+    Zero = XInput1.Up
+    Equals = XInput1.Down
+    Nine = XInput1.Left
+    Minus = XInput1.Right
+    //C+1 = (XInput1.Joy2X < -0.5)
+    var.shiftedone = (XInput1.Joy2X < -0.5)
+    if (var.shiftedone) then{
+      press(LeftCtrl)
+      wait 20 ms
+      Press(One)
+      wait 20 ms
+      release(One)
+      wait 20 ms
+      release(LeftCtrl)
+      wait 200 ms
+    }
+    //C+2 = (XInput1.Joy2Y > 0.5)
+    var.shiftedtwo = (XInput1.Joy2Y > 0.5)
+    if (var.shiftedtwo) then{
+      press(LeftCtrl)
+      wait 20 ms
+      Press(Two)
+      wait 20 ms
+      release(Two)
+      wait 20 ms
+      release(LeftCtrl)
+      wait 200 ms
+    }
+    //C+3 = XInput1.Joy2X > 0.5
+    var.shiftedthree = XInput1.Joy2X > 0.5
+    if (var.shiftedthree) then{
+      press(LeftCtrl)
+      wait 20 ms
+      Press(Three)
+      wait 20 ms
+      release(Three)
+      wait 20 ms
+      release(LeftCtrl)
+      wait 200 ms
+    }
+    //C+4 = XInput1.Joy2Y < -0.5
+    var.shiftedfour = XInput1.Joy2Y < -0.5
+    if (var.shiftedfour) then{
+      press(LeftCtrl)
+      wait 20 ms
+      Press(Four)
+      wait 20 ms
+      release(Four)
+      wait 20 ms
+      release(LeftCtrl)
+      wait 200 ms
+    }
+  //this is the unshifted mode
+  }else{
+    //again hack for frame buff
+    var.unshiftedy = XInput1.Y
+    if (var.unshiftedy) then{
+      press(LeftShift)
+      wait 20 ms
+      Press(C)
+      wait 20 ms
+      release(C)
+      wait 20 ms
+      release(LeftShift)
+      wait 200 ms
+    }
+    I = XInput1.Start
+    G = XInput1.X
+    Tab = XInput1.Back
+    M = XInput1.rightShoulder
+    Enter = XInput1.A
+    L = XInput1.LeftThumb
+    X = XInput1.RightThumb
+    Space = XInput1.RightTrigger
+    Escape = XInput1.B
+    //make wait repeatable
+    var.mywait = XInput1.leftShoulder
+    if (var.mywait) then{
+      Press(NumPad5)
+      wait(400 milliseconds)
+    }
+    //shortcuts
+    Two = XInput1.Up
+    Four = XInput1.Down
+    One = XInput1.Left
+    Three = XInput1.Right
+    Five = (XInput1.Joy2X < -0.5)
+    Six = (XInput1.Joy2Y > 0.5)
+    Seven = XInput1.Joy2X > 0.5
+    Eight = XInput1.Joy2Y < -0.5
+  }
+}
+
+//MOVE FOR LOOK MODE
+//look mode needs shift held down
+if (var.LookMode == 1) then{
+  press(Shift)
+  Left = (XInput1.Joy1X < -0.5)
+  Up = (XInput1.Joy1Y > 0.5)
+  Right = XInput1.Joy1X > 0.5
+  Down = XInput1.Joy1Y < -0.5
+  Escape+release(Shift) = XInput1.B
+}
+
+//MODE Control
+if pressed(XInput1.LeftThumb and var.NormalMode == 1) then{
+  //say("Look Mode")
+  var.LookMode = 1
+  var.NormalMode = 0
+}
+//EXIT ALL MODES
+if pressed((XInput1.B and var.NormalMode == 0) or (XInput1.A and var.FeatMode == 1)) then{
+  //say("Exit Modes")
+  var.LookMode = 0
+  var.NormalMode = 1
+}
+
+
+
+
+

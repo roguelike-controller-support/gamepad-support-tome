@@ -1,0 +1,34 @@
+enter = a
+esc = b
+space = righttrig
+tab = back
+
+shift = lefttrig
+
+powers / assignpowers = dpad+rightjoy/also shifted for 16 shortcuts
+character = y
+level = shifty
+wait = lshold
+waitfast(forheal) = shiftlshold
+talents = rightshold
+inventory = start
+quests = shiftstart
+get = x
+look = pressleftjoy
+party = shiftback
+down = shiftleftshold
+up = shiftrightshold
+switchweapons = pressrightjoy
+drop = shifta
+compare = shiftb
+log = shiftx
+move = leftjoy
+movediagonal = shiftleftjoy
+
+Known issues:
+
+* compare on items on floor does not work, in general this will not work with keyboard only
+* can't get item descriptions in stores, this is an issue with all keyboards, to get the description to work
+just switch between panes and it will update the popup
+
+/cygdrive/c/Users/math/Documents/My\ Dropbox/home/.ssh/id_rsa
